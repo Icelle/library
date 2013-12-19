@@ -3,5 +3,7 @@
 FactoryGirl.define do
   factory :book do
     title "MyString"
+    author "MyString"
+    rating "100"
   end
 end

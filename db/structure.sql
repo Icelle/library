@@ -35,10 +35,11 @@ SET default_with_oids = false;
 
 CREATE TABLE books (
     id integer NOT NULL,
-    title character varying(255),
+    title character varying(255) NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    author character varying(255)
+    author character varying(255),
+    rating numeric
 );
 
 
@@ -101,3 +102,13 @@ SET search_path TO "$user",public;
 INSERT INTO schema_migrations (version) VALUES ('20131218194619');
 
 INSERT INTO schema_migrations (version) VALUES ('20131218195454');
+
+INSERT INTO schema_migrations (version) VALUES ('20131219182127');
+
+INSERT INTO schema_migrations (version) VALUES ('20131219193151');
+
+INSERT INTO schema_migrations (version) VALUES ('20131219193502');
+
+INSERT INTO schema_migrations (version) VALUES ('20131219193951');
+
+INSERT INTO schema_migrations (version) VALUES ('20131219195459');
