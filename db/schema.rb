@@ -11,17 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219193502) do
+ActiveRecord::Schema.define(version: 20131220125451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "books", force: true do |t|
-    t.string   "title",           null: false
+    t.string   "title",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "author"
-    t.boolean  "staff_favorites"
+    t.decimal  "rating"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categorizations", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categorizations", ["book_id"], name: "index_categorizations_on_book_id", using: :btree
+  add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id", using: :btree
+
+  create_table "checkouts", force: true do |t|
+    t.integer  "book_id"
+    t.date     "check_out_date"
+    t.date     "return_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "borrower"
   end
 
 end
